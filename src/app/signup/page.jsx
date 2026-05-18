@@ -96,7 +96,7 @@ const SignUpPage = () => {
           </TextField>
 
           <div className="flex gap-2">
-            <Button className={"bg-primary hover:bg-blue-500 duration-200 transform w-full"} type="submit">
+            <Button className={"bg-primary hover:bg-blue-500 duration-200 transition w-full"} type="submit">
               Sign up
             </Button>
           </div>

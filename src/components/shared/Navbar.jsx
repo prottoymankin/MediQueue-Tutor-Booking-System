@@ -28,7 +28,7 @@ const Navbar = () => {
           {
             navLinks.map((navLink, idx) => (
               <li
-                className="duration-200 hover:border-b hover:border-b-blue-500 hover:text-blue-500 transform"
+                className="duration-200 hover:border-b hover:border-b-blue-500 hover:text-blue-500 transition"
                 key={idx}
               >
                 <Link href={navLink.path}>{navLink.name}</Link>
@@ -40,7 +40,7 @@ const Navbar = () => {
         <div className="flex gap-2 items-center">
           <Link href={"/signin"}>
             <Button 
-              className={"bg-primary hover:bg-blue-500 duration-200 rounded-none transform"}
+              className={"bg-primary hover:bg-blue-500 duration-200 rounded-none transition"}
             >
               Sign In
             </Button>
@@ -48,7 +48,7 @@ const Navbar = () => {
 
           <Link href={"/signup"}>
             <Button 
-              className={"duration hover:bg-transparent border-primary hover:border-blue-500  rounded-none text-primary hover:text-blue-500 transform"} 
+              className={"duration hover:bg-transparent border-primary hover:border-blue-500  rounded-none text-primary hover:text-blue-500 transition"} 
               variant="outline"
               >
                 Sign Up
