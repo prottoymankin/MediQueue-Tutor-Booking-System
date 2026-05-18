@@ -12,7 +12,7 @@ const SignInPage = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 space-y-10">
       <header className="space-y-2 text-center">
-        <h2 className="text-4xl">Welcome Back!</h2>
+        <h2 className="font-bold text-primary text-4xl">Welcome Back!</h2>
         <p className="max-w-2xl text-muted">
           Welcome back! We are so happy to have you here. It's great to see you again. We hope you had a safe and enjoyable time away.
         </p>

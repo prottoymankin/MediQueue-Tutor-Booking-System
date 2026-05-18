@@ -12,7 +12,7 @@ const SignUpPage = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 space-y-10">
       <header className="space-y-2 text-center">
-        <h2 className="text-4xl">Create Your Account</h2>
+        <h2 className="font-bold text-primary text-4xl">Create Your Account</h2>
         <p className="max-w-2xl text-muted">
           Create an account to connect with expert tutors and schedule your learning sessions easily.
         </p>
