@@ -1,10 +1,28 @@
 "use client";
 
 import { Button, FieldError, FieldGroup, Fieldset, Form, Input, Label, TextField, DatePicker, DateField, Calendar, Select, ListBox } from "@heroui/react";
+import toast from "react-hot-toast";
 
 const AddTutorsPage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const newTutorData = Object.fromEntries(formData.entries());
+    
+    const response = await fetch("http://localhost:5000/tutors", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(newTutorData)
+    });
+
+    const data = await response.json();
+    
+    if (data.acknowledged) {
+      toast.success("Tutor added successfully");
+    }
   }
 
   return (
@@ -25,7 +43,7 @@ const AddTutorsPage = () => {
             {/* Tutor name */}
             <TextField 
               className="w-full" 
-              name="name"
+              name="tutorName"
             >
               <Label>Tutor Name</Label>
               <Input placeholder="John Doe" />
@@ -34,7 +52,7 @@ const AddTutorsPage = () => {
             {/* Image */}
             <TextField 
               className="w-full" 
-              name="image"
+              name="photo"
             >
               <Label>Photo Url</Label>
               <Input placeholder="https://example.com/tutor-image.jpg" />
