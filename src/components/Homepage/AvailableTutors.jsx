@@ -1,0 +1,39 @@
+import Link from "next/link";
+import TutorCard from "../Tutors/TutorCard";
+import { Button } from "@heroui/react";
+import { FaArrowRight } from "react-icons/fa";
+
+const AvailableTutors = async () => {
+  const response = await fetch("http://localhost:5000/tutors?limit=6");
+  const tutors = await response.json();
+
+  return (
+    <section className="max-w-7xl mx-auto px-4 py-15 space-y-10 w-full">
+      <div className="flex items-center justify-between">
+        <h2 className="font-bold text-center text-primary text-3xl">
+          Available Tutors
+        </h2>
+
+        <Link href={"/tutors"}>
+          <Button className={"bg-primary hover:bg-blue-500"}>
+            View All
+            <FaArrowRight />
+          </Button>
+        </Link>
+      </div>
+      
+      <div className="gap-6 grid grid-cols-3">
+        {
+          tutors.map(tutor => (
+            <TutorCard 
+              key={tutor._id}
+              tutor={tutor} 
+            />  
+          ))
+        }
+      </div>
+    </section>
+  );
+};
+
+export default AvailableTutors;
