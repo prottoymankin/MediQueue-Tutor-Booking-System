@@ -1,15 +1,13 @@
-import { Avatar, Button } from "@heroui/react";
+"use client";
+
+import { Button } from "@heroui/react";
 import Link from "next/link";
 import ProfileDropDown from "../Navbar/ProfileDropDown";
+import { authClient } from "@/lib/auth-client";
 
 const Navbar = () => {
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "Tutors", path: "/tutors" },
-    { name: "Add Tutors", path: "/add-tutors" },
-    { name: "My Tutors", path: "/my-tutors" },
-    { name: "Booked Sessions", path: "/booked-sessions" },
-  ];
+  const { data } = authClient.useSession();
+  const user = data?.user;
 
   return (
     <header className="bg-white sticky shadow-lg top-0 z-50">
@@ -25,40 +23,73 @@ const Navbar = () => {
         </Link>
 
         <ul className="flex font-medium gap-6 items-center text-primary">
+          <li
+            className="duration-200 hover:border-b hover:border-b-blue-500 hover:text-blue-500 transition"
+          >
+            <Link href="/">Home</Link>
+          </li>
+
+          <li
+            className="duration-200 hover:border-b hover:border-b-blue-500 hover:text-blue-500 transition"
+          >
+            <Link href="/tutors">Tutors</Link>
+          </li>
+
           {
-            navLinks.map((navLink, idx) => (
-              <li
-                className="duration-200 hover:border-b hover:border-b-blue-500 hover:text-blue-500 transition"
-                key={idx}
-              >
-                <Link href={navLink.path}>{navLink.name}</Link>
-              </li>
-            ))
+            user && (
+              <>
+                <li
+                  className="duration-200 hover:border-b hover:border-b-blue-500 hover:text-blue-500 transition"
+                >
+                  <Link href="/add-tutors">Add Tutors</Link>
+                </li>
+
+                <li
+                  className="duration-200 hover:border-b hover:border-b-blue-500 hover:text-blue-500 transition"
+                >
+                  <Link href="/my-tutors">My Tutors</Link>
+                </li>
+
+                <li
+                  className="duration-200 hover:border-b hover:border-b-blue-500 hover:text-blue-500 transition"
+                >
+                  <Link href="/booked-sessions">Booked Sessions</Link>
+                </li>
+              </>
+            )
           }
         </ul>
 
-        <div className="flex gap-2 items-center">
-          <Link href={"/signin"}>
-            <Button 
-              className={"bg-primary hover:bg-blue-500 duration-200 rounded-none transition"}
-            >
-              Sign In
-            </Button>
-          </Link>
+        {
+          !user && (
+            <div className="flex gap-2 items-center">
+              <Link href={"/signin"}>
+                <Button 
+                  className={"bg-primary hover:bg-blue-500 duration-200 rounded-none transition"}
+                >
+                  Sign In
+                </Button>
+              </Link>
 
-          <Link href={"/signup"}>
-            <Button 
-              className={"duration hover:bg-transparent border-primary hover:border-blue-500  rounded-none text-primary hover:text-blue-500 transition"} 
-              variant="outline"
-              >
-                Sign Up
-              </Button>
-          </Link>
-        </div>
+              <Link href={"/signup"}>
+                <Button 
+                  className={"duration hover:bg-transparent border-primary hover:border-blue-500  rounded-none text-primary hover:text-blue-500 transition"} 
+                  variant="outline"
+                  >
+                    Sign Up
+                  </Button>
+              </Link>
+            </div>
+          )
+        }
 
-        <div className="flex gap-2 items-center">
-          <ProfileDropDown />
-        </div>
+        {
+          user && (
+            <div className="flex gap-2 items-center">
+              <ProfileDropDown />
+            </div>
+          )
+        }
       </nav>
     </header>
   );

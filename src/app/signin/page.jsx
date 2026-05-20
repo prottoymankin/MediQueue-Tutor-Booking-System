@@ -1,12 +1,30 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {Button, FieldError, Form, Input, Label, TextField} from "@heroui/react";
 import Link from "next/link";
+import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
 const SignInPage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const userData = Object.fromEntries(formData.entries());
+    
+    const { data, error } = await authClient.signIn.email({
+      email: userData.email,
+      password: userData.password,
+      callbackURL: "/"
+    }, {
+      onSuccess: () => {
+        toast.success("Sign in successful");
+      },
+      onError: (errorInfo) => {
+        toast.error(errorInfo.error.message);
+      }
+    });
   }
 
   return (

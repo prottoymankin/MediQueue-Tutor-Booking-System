@@ -3,10 +3,31 @@
 import Link from "next/link";
 import {Button, FieldError, Form, Input, Label, TextField} from "@heroui/react";
 import { FcGoogle } from "react-icons/fc";
+import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 const SignUpPage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const userData = Object.fromEntries(formData.entries());
+
+    const { data, error } = await authClient.signUp.email({
+      name: userData.name,
+      email: userData.email,
+      password: userData.password,
+      image: userData.image
+    }, {
+      onSuccess: () => {
+        toast.success("Sign in successful");
+        redirect("/signin");
+      },
+      onError: (errorInfo) => {
+        toast.error(errorInfo.error.message);
+      }
+    });
   }
 
   return (
