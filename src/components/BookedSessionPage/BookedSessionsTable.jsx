@@ -1,4 +1,5 @@
 import {Button, Chip, Table} from "@heroui/react";
+import { SessionCancelModal } from "./SessionCancelModal";
 
 const BookedSessionsTable = ({ bookedSessions }) => {
   return (
@@ -16,20 +17,20 @@ const BookedSessionsTable = ({ bookedSessions }) => {
           <Table.Body>
             {
               bookedSessions.map(session => (
-                <Table.Row key={session?._id}>
+                <Table.Row
+                  key={session?._id}
+                >
                   <Table.Cell>{session?.tutorName}</Table.Cell>
                   <Table.Cell>{session?.name}</Table.Cell>
                   <Table.Cell>{session?.studentEmail}</Table.Cell>
                   <Table.Cell>
-                    <Chip color="success">{session?.status}</Chip>
+                    <Chip color={session?.status === "Confirm" ? "success" : "danger"}>{session?.status}</Chip>
                   </Table.Cell>
                   <Table.Cell>
-                    <Button 
-                      className={"border-red-500 text-red-500"}
-                      variant="outline"
-                    >
-                      Cancel
-                    </Button>
+                    <SessionCancelModal 
+                      sessionId={session?._id}
+                      status={session?.status} 
+                    />
                   </Table.Cell>
                 </Table.Row>
               ))
