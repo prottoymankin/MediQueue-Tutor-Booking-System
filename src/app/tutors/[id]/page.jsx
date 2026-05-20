@@ -1,7 +1,5 @@
-import { Button } from "@heroui/react";
+import { BookSessionModal } from "@/components/Tutors/BookSessionModal";
 import Image from "next/image";
-import { FaBriefcase, FaCalendarAlt, FaUserGraduate } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
 
 const TutorDatailsPage = async ({ params }) => {
   const { id } = await params;
@@ -9,7 +7,7 @@ const TutorDatailsPage = async ({ params }) => {
   const response = await fetch(`http://localhost:5000/tutors/${id}`);
   const tutor = await response.json();
 
-  const {  availableDaysTimes, experience, hourlyFee, institution, location, photo, sessionStartDate, subject, teachingMode, totalSlot, tutorName} = tutor;
+  const {  availableDaysTimes, experience, hourlyFee, _id, institution, location, photo, sessionStartDate, subject, teachingMode, totalSlot, tutorName} = tutor;
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 space-y-10 w-full">
@@ -74,9 +72,10 @@ const TutorDatailsPage = async ({ params }) => {
           </div>
 
           <div className="flex justify-end">
-            <Button className={"bg-primary hover:bg-blue-500"}>
-              Book Session
-            </Button>
+            <BookSessionModal
+              tutorId={_id}
+              tutorName={tutorName}
+            />
           </div>
         </div>
       </div>
