@@ -27,6 +27,12 @@ const SignInPage = () => {
     });
   }
 
+  const handleGoogleSignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google"
+    })
+  }
+
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 space-y-10">
       <header className="space-y-2 text-center">
@@ -91,6 +97,7 @@ const SignInPage = () => {
 
         <Button 
           className={"border-primary w-full"} 
+          onClick={handleGoogleSignIn}
           variant="outline"
         >
           <FcGoogle />
