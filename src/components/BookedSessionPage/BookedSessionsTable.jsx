@@ -1,9 +1,6 @@
 import {Button, Chip, Table} from "@heroui/react";
 
 const BookedSessionsTable = ({ bookedSessions }) => {
-
-  console.log(bookedSessions)
-
   return (
     <Table>
       <Table.ScrollContainer>

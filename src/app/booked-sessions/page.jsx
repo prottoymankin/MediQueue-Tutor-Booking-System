@@ -1,4 +1,5 @@
 import BookedSessionsTable from "@/components/BookedSessionPage/BookedSessionsTable";
+import EmptyBookedSession from "@/components/BookedSessionPage/EmptyBookedSession";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
@@ -14,7 +15,13 @@ export default async function BookedSessionsPage () {
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 w-full">
-      <BookedSessionsTable bookedSessions={bookedSessions} />
+      {
+        bookedSessions.length === 0 ? (
+          <EmptyBookedSession />
+        ) : (
+          <BookedSessionsTable bookedSessions={bookedSessions} />
+        )
+      }
     </section>
   );
 }
