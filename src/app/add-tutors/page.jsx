@@ -17,6 +17,8 @@ const AddTutorsPage = () => {
 
     newTutorData = {
       ...newTutorData,
+      totalSlot: Number(newTutorData.totalSlot),
+      hourlyFee: Number(newTutorData.hourlyFee),
       createdBy: user?.id,
       registrationDate: new Date().toISOString()
     };

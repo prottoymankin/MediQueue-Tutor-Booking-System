@@ -14,7 +14,7 @@ export function BookSessionModal ({ tutorId, tutorName, totalSlot }) {
     e.preventDefault();
 
     if (parseInt(totalSlot) === 0) {
-      toast.error("No available slots left.");
+      toast.error("This session is fully booked. You can’t join at the moment");
       return;
     } 
 
@@ -49,7 +49,6 @@ export function BookSessionModal ({ tutorId, tutorName, totalSlot }) {
       redirect("/booked-sessions");
     }
   }
-
 
   return (
     <Modal>

@@ -11,7 +11,13 @@ export function EditAddedTutor({ tutor }) {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const updatedData = Object.fromEntries(formData.entries());
+    let updatedData = Object.fromEntries(formData.entries());
+
+    updatedData = {
+      ...updatedData,
+      totalSlot: Number(updatedData.totalSlot),
+      hourlyFee: Number(updatedData.hourlyFee),
+    }
 
     const response = await fetch(`http://localhost:5000/tutors/${tutor?._id}`, {
       method: "PATCH",
