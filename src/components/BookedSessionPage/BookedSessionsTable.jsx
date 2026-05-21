@@ -28,8 +28,7 @@ const BookedSessionsTable = ({ bookedSessions }) => {
                   </Table.Cell>
                   <Table.Cell>
                     <SessionCancelModal 
-                      sessionId={session?._id}
-                      status={session?.status} 
+                      session={session}
                     />
                   </Table.Cell>
                 </Table.Row>

@@ -75,6 +75,7 @@ const TutorDatailsPage = async ({ params }) => {
             <BookSessionModal
               tutorId={_id}
               tutorName={tutorName}
+              totalSlot={totalSlot}
             />
           </div>
         </div>

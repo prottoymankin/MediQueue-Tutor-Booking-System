@@ -6,12 +6,17 @@ import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 import { FaCalendarCheck } from "react-icons/fa";
 
-export function BookSessionModal({ tutorId, tutorName }) {
+export function BookSessionModal ({ tutorId, tutorName, totalSlot }) {
   const { data } = authClient.useSession();
   const user = data?.user;
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    if (parseInt(totalSlot) === 0) {
+      toast.error("No available slots left.");
+      return;
+    } 
 
     const formData = new FormData(e.currentTarget);
     let bookedSessionData = Object.fromEntries(formData.entries());
@@ -33,10 +38,18 @@ export function BookSessionModal({ tutorId, tutorName }) {
     const data = await response.json();
 
     if (data.acknowledged) {
+      await fetch(`http://localhost:5000/tutors/change-slot/${tutorId}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({value: -1})
+      });
       toast.success("Session booked successful");
       redirect("/booked-sessions");
     }
   }
+
 
   return (
     <Modal>
@@ -127,7 +140,7 @@ export function BookSessionModal({ tutorId, tutorName }) {
                     <Button 
                       type="submit"
                       className={"bg-primary hover:bg-blue-500"}
-                    >Confirm Book Session</Button>
+                    >Confirm</Button>
                   </Modal.Footer>
                 </form>
               </Surface>
