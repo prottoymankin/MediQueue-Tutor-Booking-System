@@ -38,8 +38,8 @@ const WhyChoose = () => {
         Why Choose Us
       </h2>
 
-      <div className="gap-6 grid grid-cols-3">
-        <div className="flex flex-col gap-6 justify-center">
+      <div className="gap-6 grid lg:grid-cols-3">
+        <div className="flex flex-col sm:flex-row lg:flex-col gap-6 justify-center">
           {
             whyChooseData.slice(0,2).map(data => (
               <WhyChooseCard key={data.id} data={data} />
@@ -47,7 +47,7 @@ const WhyChoose = () => {
           }
         </div>
 
-        <div className="aspect-square relative w-full">
+        <div className="aspect-square relative w-100 mx-auto lg:w-full">
           <Image
             alt=""
             src={question}
@@ -56,7 +56,7 @@ const WhyChoose = () => {
           />
         </div>
 
-        <div className="flex flex-col gap-6 justify-center">
+        <div className="flex flex-col sm:flex-row lg:flex-col gap-6 justify-center">
           {
             whyChooseData.slice(2).map(data => (
               <WhyChooseCard key={data.id} data={data} />

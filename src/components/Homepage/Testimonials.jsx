@@ -40,7 +40,7 @@ const Testimonials = () => {
         <p className="text-muted">Hear from students who improved their learning experience through MediQueue.</p>
       </header>
 
-      <div className="gap-6 grid grid-cols-3">
+      <div className="gap-6 grid sm:grid-cols-2 lg:grid-cols-3">
         {
           testimonialsData.map(data => (
             <TestimonialCard
