@@ -236,7 +236,7 @@ export function EditAddedTutor({ tutor }) {
                     <Button slot="close" variant="secondary">
                       Cancel
                     </Button>
-                    <Button type="submit">Save Changes</Button>
+                    <Button type="submit" slot="close">Save Changes</Button>
                   </Modal.Footer>
                 </form>
               </Surface>

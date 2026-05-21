@@ -1,9 +1,24 @@
 "use client";
 
 import {AlertDialog, Button} from "@heroui/react";
+import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-export function DeleteAddedTutor() {
+export function DeleteAddedTutor({ tutor }) {
+  const handleDeleteAddedTutor = async () => {
+    const response = await fetch(`http://localhost:5000/tutors/${tutor?._id}`, {
+      method: "DELETE"
+    });
+
+    const data = await response.json();
+    
+    if (data.acknowledged) {
+      toast.success("Tutor deleted successfully");
+      redirect("/my-tutors");
+    }
+  }
+
   return (
     <AlertDialog>
       <Button
@@ -30,8 +45,13 @@ export function DeleteAddedTutor() {
               <Button slot="close" variant="tertiary">
                 Cancel
               </Button>
-              <Button slot="close" variant="danger">
-                Delete Project
+
+              <Button 
+                onClick={handleDeleteAddedTutor}
+                slot="close" 
+                variant="danger"
+              >
+                Delete tutor
               </Button>
             </AlertDialog.Footer>
           </AlertDialog.Dialog>

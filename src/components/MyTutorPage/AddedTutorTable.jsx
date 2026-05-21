@@ -38,7 +38,7 @@ export function AddedTutorTable({ addedTutors }) {
 
                   <Table.Cell className={"space-x-2"}>
                     <EditAddedTutor tutor={tutor} />
-                    <DeleteAddedTutor />
+                    <DeleteAddedTutor tutor={tutor} />
                   </Table.Cell>
                 </Table.Row>
               ))
