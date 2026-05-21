@@ -2,7 +2,7 @@ import {Table} from "@heroui/react";
 import { EditAddedTutor } from "./EditAddedTutor";
 import { DeleteAddedTutor } from "./DeleteAddedTutor";
 
-export function AddedTutorTable() {
+export function AddedTutorTable({ addedTutors }) {
   return (
     <Table>
       <Table.ScrollContainer>
@@ -17,19 +17,32 @@ export function AddedTutorTable() {
             <Table.Column>Action</Table.Column>
           </Table.Header>
           <Table.Body>
-            <Table.Row>
-              <Table.Cell>Kate Moore</Table.Cell>
-              <Table.Cell>Kate Moore</Table.Cell>
-              <Table.Cell>CEO</Table.Cell>
-              <Table.Cell>Active</Table.Cell>
-              <Table.Cell>400</Table.Cell>
-              <Table.Cell>20</Table.Cell>
+            {
+              addedTutors.map(tutor => (
+                <Table.Row key={tutor?._id}>
+                  <Table.Cell>
+                    {
+                      new Date(tutor?.registrationDate).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric"
+                      })
+                    }
+                  </Table.Cell>
 
-              <Table.Cell className={"space-x-2"}>
-                <EditAddedTutor />
-                <DeleteAddedTutor />
-              </Table.Cell>
-            </Table.Row>
+                  <Table.Cell>{tutor?.tutorName}</Table.Cell>
+                  <Table.Cell>{tutor?.subject}</Table.Cell>
+                  <Table.Cell>{tutor?.availableDaysTimes}</Table.Cell>
+                  <Table.Cell>{tutor?.hourlyFee}</Table.Cell>
+                  <Table.Cell>{tutor?.totalSlot}</Table.Cell>
+
+                  <Table.Cell className={"space-x-2"}>
+                    <EditAddedTutor />
+                    <DeleteAddedTutor />
+                  </Table.Cell>
+                </Table.Row>
+              ))
+            }
           </Table.Body>
         </Table.Content>
       </Table.ScrollContainer>

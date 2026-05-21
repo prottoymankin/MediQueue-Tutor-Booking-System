@@ -1,14 +1,27 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Button, FieldError, FieldGroup, Fieldset, Form, Input, Label, TextField, DatePicker, DateField, Calendar, Select, ListBox } from "@heroui/react";
+import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 
 const AddTutorsPage = () => {
+  const { data } = authClient.useSession();
+  const user = data?.user;
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const newTutorData = Object.fromEntries(formData.entries());
+    let newTutorData = Object.fromEntries(formData.entries());
+
+    newTutorData = {
+      ...newTutorData,
+      createdBy: user?.id,
+      registrationDate: new Date().toISOString()
+    };
+
+    console.log(newTutorData);
     
     const response = await fetch("http://localhost:5000/tutors", {
       method: "POST",
@@ -22,6 +35,7 @@ const AddTutorsPage = () => {
     
     if (data.acknowledged) {
       toast.success("Tutor added successfully");
+      redirect("/my-tutors");
     }
   }
 
