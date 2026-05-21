@@ -37,7 +37,7 @@ export function AddedTutorTable({ addedTutors }) {
                   <Table.Cell>{tutor?.totalSlot}</Table.Cell>
 
                   <Table.Cell className={"space-x-2"}>
-                    <EditAddedTutor />
+                    <EditAddedTutor tutor={tutor} />
                     <DeleteAddedTutor />
                   </Table.Cell>
                 </Table.Row>

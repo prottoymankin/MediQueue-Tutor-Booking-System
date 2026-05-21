@@ -1,9 +1,34 @@
 "use client";
 
-import {Button, Input, Label, Modal, Surface, TextField, Select, ListBox, DatePicker, DateField, Calendar} from "@heroui/react";
+import {Button, Input, Label, Modal, Surface, TextField, Select, ListBox, DateField } from "@heroui/react";
 import { FaEdit } from "react-icons/fa";
+import { parseDate } from "@internationalized/date"
+import toast from "react-hot-toast";
+import { redirect } from "next/navigation";
 
-export function EditAddedTutor() {
+export function EditAddedTutor({ tutor }) {
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const updatedData = Object.fromEntries(formData.entries());
+
+    const response = await fetch(`http://localhost:5000/tutors/${tutor?._id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(updatedData)
+    });
+
+    const data = await response.json();
+
+    if (data.acknowledged) {
+      toast.success("Save changes successfully");
+      redirect("/my-tutors");
+    }
+  }
+
   return (
     <Modal>
       <Button
@@ -25,13 +50,14 @@ export function EditAddedTutor() {
             </Modal.Header>
             <Modal.Body className="p-6">
               <Surface variant="default">
-                <form className="flex flex-col gap-4">
+                <form className="flex flex-col gap-4" onSubmit={onSubmit}>
                   <div className="flex gap-4 w-full">
                     <TextField 
                       className={"w-full"}
                       name="tutorName" 
                       type="text" 
                       variant="secondary"
+                      defaultValue={tutor?.tutorName}
                     >
                       <Label>Tutor Name</Label>
                       <Input />
@@ -39,6 +65,7 @@ export function EditAddedTutor() {
 
                     <TextField 
                       className={"w-full"}
+                      defaultValue={tutor?.photo}
                       name="photo" 
                       type="url" 
                       variant="secondary"
@@ -54,6 +81,7 @@ export function EditAddedTutor() {
                       name="subject" 
                       placeholder="Select one"
                       variant="secondary"
+                      defaultSelectedKey={[tutor?.subject]}
                     >
                       <Label>Subject</Label>
                       <Select.Trigger>
@@ -92,6 +120,7 @@ export function EditAddedTutor() {
                     
                     <TextField 
                       className={"w-full"}
+                      defaultValue={tutor?.availableDaysTimes}
                       name="availableDaysTimes" 
                       type="text" 
                       variant="secondary"
@@ -104,6 +133,7 @@ export function EditAddedTutor() {
                   <div className="flex gap-4 w-full">
                     <TextField
                       className={"w-full"}
+                      defaultValue={tutor?.hourlyFee}
                       name="hourlyFee"
                       type="number"
                       variant="secondary"
@@ -112,9 +142,9 @@ export function EditAddedTutor() {
                       <Input />
                     </TextField>
 
-
                     <TextField
                       className={"w-full"}
+                      defaultValue={tutor?.totalSlot}
                       name="totalSlot"
                       type="number"
                       variant="secondary"
@@ -125,46 +155,20 @@ export function EditAddedTutor() {
                   </div>
 
                   <div className="flex gap-4 w-full">
-                    <DatePicker 
+                    <DateField 
                       className="w-full" 
                       name="sessionStartDate"
+                      defaultValue={parseDate(tutor?.sessionStartDate)}
                     >
                       <Label>Session Start Date</Label>
-                      <DateField.Group fullWidth variant="secondary">
+                      <DateField.Group variant="secondary">
                         <DateField.Input>{(segment) => <DateField.Segment segment={segment} />}</DateField.Input>
-                        <DateField.Suffix>
-                          <DatePicker.Trigger>
-                            <DatePicker.TriggerIndicator />
-                          </DatePicker.Trigger>
-                        </DateField.Suffix>
                       </DateField.Group>
-                      <DatePicker.Popover>
-                        <Calendar aria-label="Event date">
-                          <Calendar.Header>
-                            <Calendar.YearPickerTrigger>
-                              <Calendar.YearPickerTriggerHeading />
-                              <Calendar.YearPickerTriggerIndicator />
-                            </Calendar.YearPickerTrigger>
-                            <Calendar.NavButton slot="previous" />
-                            <Calendar.NavButton slot="next" />
-                          </Calendar.Header>
-                          <Calendar.Grid>
-                            <Calendar.GridHeader>
-                              {(day) => <Calendar.HeaderCell>{day}</Calendar.HeaderCell>}
-                            </Calendar.GridHeader>
-                            <Calendar.GridBody>{(date) => <Calendar.Cell date={date} />}</Calendar.GridBody>
-                          </Calendar.Grid>
-                          <Calendar.YearPickerGrid>
-                            <Calendar.YearPickerGridBody>
-                              {({year}) => <Calendar.YearPickerCell year={year} />}
-                            </Calendar.YearPickerGridBody>
-                          </Calendar.YearPickerGrid>
-                        </Calendar>
-                      </DatePicker.Popover>
-                    </DatePicker>
+                    </DateField>
 
                     <TextField 
-                      className="w-full" 
+                      className="w-full"
+                      defaultValue={tutor?.institution} 
                       name="institution"
                       type="text"
                       variant="secondary"
@@ -176,7 +180,8 @@ export function EditAddedTutor() {
 
                   <div className="flex gap-4 w-full">
                     <TextField 
-                      className="w-full" 
+                      className="w-full"
+                      defaultValue={tutor?.experience} 
                       name="experience"
                       type="text"
                       variant="secondary"
@@ -187,6 +192,7 @@ export function EditAddedTutor() {
 
                     <TextField 
                       className="w-full" 
+                      defaultValue={tutor?.location}
                       name="location"
                       type="text"
                       variant="secondary"
@@ -201,6 +207,7 @@ export function EditAddedTutor() {
                     placeholder="Select one"
                     name="teachingMode"
                     variant="secondary"
+                    defaultSelectedKey={[tutor?.teachingMode]}
                   >
                     <Label>Teaching Mode</Label>
                     <Select.Trigger>
@@ -224,15 +231,16 @@ export function EditAddedTutor() {
                       </ListBox>
                     </Select.Popover>
                   </Select>
+
+                  <Modal.Footer>
+                    <Button slot="close" variant="secondary">
+                      Cancel
+                    </Button>
+                    <Button type="submit">Save Changes</Button>
+                  </Modal.Footer>
                 </form>
               </Surface>
             </Modal.Body>
-            <Modal.Footer>
-              <Button slot="close" variant="secondary">
-                Cancel
-              </Button>
-              <Button slot="close">Save Changes</Button>
-            </Modal.Footer>
           </Modal.Dialog>
         </Modal.Container>
       </Modal.Backdrop>
