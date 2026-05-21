@@ -76,6 +76,7 @@ const TutorDatailsPage = async ({ params }) => {
               tutorId={_id}
               tutorName={tutorName}
               totalSlot={totalSlot}
+              sessionStartDate={sessionStartDate}
             />
           </div>
         </div>

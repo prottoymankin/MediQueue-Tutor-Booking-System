@@ -34,7 +34,7 @@ const WhyChoose = () => {
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 space-y-10">
-      <h2 className="font-bold text-primary text-center text-4xl">
+      <h2 className="font-bold text-primary text-center text-3xl">
         Why Choose Us
       </h2>
 

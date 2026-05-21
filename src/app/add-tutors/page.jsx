@@ -22,8 +22,6 @@ const AddTutorsPage = () => {
       createdBy: user?.id,
       registrationDate: new Date().toISOString()
     };
-
-    console.log(newTutorData);
     
     const response = await fetch("http://localhost:5000/tutors", {
       method: "POST",
@@ -43,8 +41,8 @@ const AddTutorsPage = () => {
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 space-y-10 w-full">
-      <header className="space-y-2 text-center">
-        <h2 className="font-bold text-primary text-4xl">Add a New Tutor</h2>
+      <header>
+        <h2 className="font-bold text-primary text-3xl">Add a New Tutor</h2>
         <p className="text-muted">
           Fill in the tutor details to make the profile available for students to book learning sessions.
         </p>
