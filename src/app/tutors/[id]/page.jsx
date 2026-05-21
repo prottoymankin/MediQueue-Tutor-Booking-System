@@ -12,10 +12,10 @@ const TutorDatailsPage = async ({ params }) => {
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 space-y-10 w-full">
       <div 
-        className="border border-primary flex gap-6 items-center p-6 rounded-2xl"
+        className="border border-gray-300 flex flex-col lg:flex-row gap-6 items-center p-6 rounded-2xl shadow-2xl"
       >
         <div 
-          className="min-h-[55vh] overflow-hidden relative rounded-2xl w-1/2"
+          className="min-h-[55vh] overflow-hidden relative rounded-2xl w-125 lg:w-1/2"
         >
           <Image 
             alt={tutorName}
@@ -25,7 +25,7 @@ const TutorDatailsPage = async ({ params }) => {
           />
         </div>
 
-        <div className="space-y-4 w-1/2">
+        <div className="space-y-4 w-full lg:w-1/2">
           <div>
             <h3 className="font-bold text-primary text-2xl">{tutorName}</h3>
             <p className="text-muted">{subject}</p>

@@ -7,7 +7,7 @@ const TutorCard = ({ tutor }) => {
 
   return (
     <div 
-      className="border border-primary duration-200 overflow-hidden rounded-2xl shadow-md hover:shadow-[8px_8px_0_#023760] transition hover:-translate-y-1"
+      className="border border-gray-200 duration-200 overflow-hidden rounded-2xl shadow-md hover:shadow-[8px_8px_0_#023760] transition hover:-translate-y-1"
     >
       <div className="h-60 relative w-full">
         <Image 

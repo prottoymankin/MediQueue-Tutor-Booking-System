@@ -15,7 +15,7 @@ const TutorsPage = async () => {
         </p>
       </header>
 
-      <div className="gap-6 grid grid-cols-3">
+      <div className="gap-6 grid sm:grid-cols-2 lg:grid-cols-3">
         {
           tutors.map(tutor => (
             <TutorCard 

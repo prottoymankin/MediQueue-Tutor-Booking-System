@@ -23,7 +23,7 @@ const Footer = () => {
           </p>
         </header>
 
-        <div className="gap-6 grid grid-cols-3">
+        <div className="gap-6 grid md:grid-cols-3">
           <div className="space-y-4">
             <h3 className="font-medium text-2xl">Services</h3>
             <ul className="space-y-2">
