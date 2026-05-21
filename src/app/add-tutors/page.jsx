@@ -35,7 +35,7 @@ const AddTutorsPage = () => {
       </header>
 
       <Form 
-        className="border border-primary w-full max-w-2xl mx-auto p-6 rounded-2xl shadow-lg" 
+        className="border border-gray-200 w-full max-w-2xl mx-auto p-6 rounded-2xl shadow-lg" 
         onSubmit={onSubmit}
       >
         <Fieldset>
@@ -44,6 +44,8 @@ const AddTutorsPage = () => {
             <TextField 
               className="w-full" 
               name="tutorName"
+              type="text"
+              variant="secondary"
             >
               <Label>Tutor Name</Label>
               <Input placeholder="John Doe" />
@@ -53,6 +55,8 @@ const AddTutorsPage = () => {
             <TextField 
               className="w-full" 
               name="photo"
+              type="url"
+              variant="secondary"
             >
               <Label>Photo Url</Label>
               <Input placeholder="https://example.com/tutor-image.jpg" />
@@ -63,6 +67,7 @@ const AddTutorsPage = () => {
               className="w-full"
               name="subject" 
               placeholder="Select one"
+              variant="secondary"
             >
               <Label>Subject</Label>
               <Select.Trigger>
@@ -103,6 +108,8 @@ const AddTutorsPage = () => {
             <TextField 
               className="w-full" 
               name="availableDaysTimes"
+              type="text"
+              variant="secondary"
             >
               <Label>Available Days and Times</Label>
               <Input placeholder="Sun - Thu 5:00 PM - 8:00 PM" />
@@ -111,10 +118,11 @@ const AddTutorsPage = () => {
             {/* Hourly fee & Total slot */}
             <div className="flex gap-4">
               <TextField
+                className={"w-full"}
                 isRequired
                 name="hourlyFee"
                 type="number"
-                className={"w-full"}
+                variant="secondary"
               >
                 <Label>Hourly Fee</Label>
                 <Input placeholder="1000" />
@@ -123,10 +131,11 @@ const AddTutorsPage = () => {
 
 
               <TextField
+                className={"w-full"}
                 isRequired
                 name="totalSlot"
                 type="number"
-                className={"w-full"}
+                variant="secondary"
               >
                 <Label>Total Slot</Label>
                 <Input placeholder="50" />
@@ -137,7 +146,7 @@ const AddTutorsPage = () => {
             {/* Session Start date */}
             <DatePicker className="w-full" name="sessionStartDate">
               <Label>Session Start Date</Label>
-              <DateField.Group fullWidth>
+              <DateField.Group fullWidth variant="secondary">
                 <DateField.Input>{(segment) => <DateField.Segment segment={segment} />}</DateField.Input>
                 <DateField.Suffix>
                   <DatePicker.Trigger>
@@ -174,6 +183,8 @@ const AddTutorsPage = () => {
             <TextField 
               className="w-full" 
               name="institution"
+              type="text"
+              variant="secondary"
             >
               <Label>Institution</Label>
               <Input placeholder="ABC College" />
@@ -183,6 +194,8 @@ const AddTutorsPage = () => {
             <TextField 
               className="w-full" 
               name="experience"
+              type="text"
+              variant="secondary"
             >
               <Label>Experience</Label>
               <Input placeholder="5 years" />
@@ -192,6 +205,8 @@ const AddTutorsPage = () => {
             <TextField 
               className="w-full" 
               name="location"
+              type="text"
+              variant="secondary"
             >
               <Label>Location(Area/City)</Label>
               <Input placeholder="Dhaka" />
@@ -202,6 +217,7 @@ const AddTutorsPage = () => {
               className="w-full" 
               placeholder="Select one"
               name="teachingMode"
+              variant="secondary"
             >
               <Label>Teaching Mode</Label>
               <Select.Trigger>
@@ -229,19 +245,13 @@ const AddTutorsPage = () => {
 
           <Fieldset.Actions className="justify-end">
             <Button 
-              className={"border border-primary hover:border-blue-500 rounded-sm text-primary hover:text-blue-500"}
               type="reset" 
-              variant="outline"
+              variant="secondary"
             >
               Reset
             </Button>
 
-            <Button 
-              className={"bg-primary hover:bg-blue-500 duration-200 rounded-sm transition"}
-              type="submit"
-            >
-              Add Tutor
-            </Button>
+            <Button type="submit">Add Tutor</Button>
           </Fieldset.Actions>
         </Fieldset>
       </Form>
