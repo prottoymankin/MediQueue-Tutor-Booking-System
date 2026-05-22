@@ -14,10 +14,13 @@ const MyTutorPage = async () => {
   const addedTutors = await response.json();
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-15 space-y-10 w-full">
+    <section className="max-w-7xl mx-auto px-4 py-15 space-y-6 w-full">
       <header>
-        <h2 className="font-bold text-primary text-3xl">Added Tutor List</h2>
-        <p className="text-muted">
+        <h2 className="font-bold text-slate-900 dark:text-slate-50 text-3xl">
+          Added Tutor List
+        </h2>
+
+        <p className="text-slate-600 dark:text-slate-400">
           Here are all the tutors you’ve created and added.
         </p>
       </header>

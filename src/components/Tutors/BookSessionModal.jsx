@@ -68,7 +68,7 @@ export function BookSessionModal ({ tutorId, tutorName, totalSlot, sessionStartD
   return (
     <>
       <Button 
-        className={"bg-primary hover:bg-blue-500"}
+        className={"bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 rounded-md"}
         onClick={handleBookSession}
       >
         Book Session
@@ -150,7 +150,7 @@ export function BookSessionModal ({ tutorId, tutorName, totalSlot, sessionStartD
 
                     <Modal.Footer>
                       <Button 
-                        className={"border-primary hover:border-blue-500 text-primary hover:text-blue-500"}
+                        className={"bg-transparent border border-blue-600  dark:border-blue-500 rounded-md text-blue-600 dark:text-blue-500"}
                         slot="close" 
                         variant="outline"
                       >
@@ -158,8 +158,8 @@ export function BookSessionModal ({ tutorId, tutorName, totalSlot, sessionStartD
                       </Button>
 
                       <Button 
+                        className={"bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 rounded-md"}
                         type="submit"
-                        className={"bg-primary hover:bg-blue-500"}
                       >Confirm</Button>
                     </Modal.Footer>
                   </form>

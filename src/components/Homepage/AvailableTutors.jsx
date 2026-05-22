@@ -10,7 +10,9 @@ const AvailableTutors = async () => {
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 space-y-10 w-full">
       <div className="flex items-center justify-between">
-        <h2 className="font-bold text-center text-primary text-3xl">
+        <h2 
+          className="font-bold text-center text-slate-900 dark:text-slate-50 text-3xl"
+        >
           Available Tutors
         </h2>
 

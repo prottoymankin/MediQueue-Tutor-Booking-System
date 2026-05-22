@@ -49,14 +49,14 @@ const AddTutorsPage = () => {
       </header>
 
       <Form 
-        className="border border-gray-200 w-full max-w-2xl mx-auto p-6 rounded-2xl shadow-lg" 
+        className="border border-slate-200 dark:border-slate-800 w-full max-w-2xl mx-auto p-6 rounded-2xl" 
         onSubmit={onSubmit}
       >
         <Fieldset>
           <FieldGroup>
             {/* Tutor name */}
             <TextField 
-              className="w-full" 
+              // className="w-full" 
               name="tutorName"
               type="text"
               variant="secondary"
@@ -130,7 +130,7 @@ const AddTutorsPage = () => {
             </TextField>
 
             {/* Hourly fee & Total slot */}
-            <div className="flex gap-4">
+            <div className="flex flex-col md:flex-row gap-4">
               <TextField
                 className={"w-full"}
                 isRequired
@@ -259,13 +259,23 @@ const AddTutorsPage = () => {
 
           <Fieldset.Actions className="justify-end">
             <Button 
+              className="
+              bg-transparent border 
+              border-blue-600  dark:border-blue-500 
+              rounded-md 
+              text-blue-600 dark:text-blue-500"
               type="reset" 
               variant="secondary"
             >
               Reset
             </Button>
 
-            <Button type="submit">Add Tutor</Button>
+            <Button 
+              className={"bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-md"}
+              type="submit"
+            >
+              Add Tutor
+            </Button>
           </Fieldset.Actions>
         </Fieldset>
       </Form>

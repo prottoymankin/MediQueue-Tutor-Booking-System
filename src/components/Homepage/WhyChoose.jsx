@@ -1,8 +1,8 @@
 import Image from "next/image";
-import question from "../../../public/assets/question.png";
 import WhyChooseCard from "./WhyChooseCard";
 import { LiaCalendarSolid, LiaUserCheckSolid } from "react-icons/lia";
 import { MdOutlineAccessTime, MdOutlineLaptopChromebook } from "react-icons/md";
+import whyChooseUs from "../../../public/assets/why-choose-us.png";
 
 const WhyChoose = () => {
    const whyChooseData = [
@@ -34,7 +34,9 @@ const WhyChoose = () => {
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 space-y-10">
-      <h2 className="font-bold text-primary text-center text-3xl">
+      <h2 
+        className="font-bold text-slate-900 dark:text-slate-50 text-center text-3xl"
+      >
         Why Choose Us
       </h2>
 
@@ -47,10 +49,10 @@ const WhyChoose = () => {
           }
         </div>
 
-        <div className="aspect-square relative w-100 mx-auto lg:w-full">
+        <div className="aspect-square relative w-full max-w-100 mx-auto lg:w-full self-center">
           <Image
             alt=""
-            src={question}
+            src={whyChooseUs}
             fill
             className="object-contain"
           />

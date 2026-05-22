@@ -34,9 +34,12 @@ const Testimonials = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 space-y-10">
       <header className="space-y-2 text-center">
-        <h2 className="font-bold text-primary text-center text-3xl">
+        <h2 
+          className="font-bold text-slate-900 dark:text-slate-50 text-center text-3xl"
+        >
           What Students Say
         </h2>
+        
         <p className="text-muted">Hear from students who improved their learning experience through MediQueue.</p>
       </header>
 

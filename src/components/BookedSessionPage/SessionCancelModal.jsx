@@ -31,12 +31,12 @@ export function SessionCancelModal({ session }) {
 
   return (
     <AlertDialog>
-      <Button 
-        className={"border-red-500 text-red-500"}
-        variant="outline"
+      <Button
+        className={"rounded-md"}
+        variant="danger-soft"
         isDisabled={session?.status === "Confirm" ? false : true}
       >
-        Cancel Session
+        Cancel
       </Button>
 
       <AlertDialog.Backdrop>

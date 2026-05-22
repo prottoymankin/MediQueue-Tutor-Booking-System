@@ -5,28 +5,36 @@ import { IoLocationSharp } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <footer className="bg-[url('/footer.svg')] bg-center bg-cover bg-no-repeat  py-15 text-white">
+    <footer 
+      className="
+      border-t border-slate-200 dark:border-slate-800
+      py-15"
+    >
       <div className="max-w-7xl mx-auto px-4 space-y-10">
         <header>
           <Link 
-            className="font-bold text-[28px]" 
+            className="font-extrabold text-slate-900 dark:text-slate-50 text-[28px]" 
             href={"/"}
           >
-            <span className="text-blue-500">M</span>
+            <span className="text-blue-600 dark:text-blue-400">M</span>
             edi
-            <span className="text-blue-500">Q</span>
+            <span className="text-blue-600 dark:text-blue-400">Q</span>
             ueue
           </Link>
 
-          <p className="max-w-xl">
+          <p className="max-w-xl text-slate-600 dark:text-slate-400">
             MediQueue simplifies online tutor booking by helping students find expert tutors, schedule learning sessions, and manage classes seamlessly through a smart and organized platform.
           </p>
         </header>
 
         <div className="gap-6 grid md:grid-cols-3">
           <div className="space-y-4">
-            <h3 className="font-medium text-2xl">Services</h3>
-            <ul className="space-y-2">
+            <h3 
+              className="font-medium text-slate-800 dark:text-slate-200 text-2xl"
+            >
+              Services
+            </h3>
+            <ul className="space-y-2 text-slate-600 dark:text-slate-400">
               <li>About us</li>
               <li><Link href={"/tutors"}>Tutors</Link></li>
               <li><Link href={"/add-tutors"}>Add Tutors</Link></li>
@@ -37,8 +45,13 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4">
-            <h3 className="font-medium text-2xl">Contact</h3>
-            <ul className="space-y-2">
+            <h3 
+              className="font-medium text-slate-800 dark:text-slate-200 text-2xl"
+            >
+              Contact
+            </h3>
+
+            <ul className="space-y-2 text-slate-600 dark:text-slate-400">
               <li className="flex gap-2 items-center">
                 <IoMdMail />
                 support@mediqueue.com
@@ -55,8 +68,13 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4">
-            <h3 className="font-medium text-2xl">Social</h3>
-            <ul className="flex gap-4 items-center text-2xl">
+            <h3 
+              className="font-medium text-slate-800 dark:text-slate-200 text-2xl"
+            >
+              Social
+            </h3>
+
+            <ul className="flex gap-4 items-center text-slate-600 dark:text-slate-400 text-2xl">
               <li><FaFacebook /></li>
               <li><FaInstagram /></li>
               <li><FaYoutube /></li>
@@ -65,7 +83,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <p className="text-center">
+        <p className="text-center text-slate-800 dark:text-slate-200">
           © {new Date().getFullYear()} MediQueue. All rights reserved.
         </p>
       </div>

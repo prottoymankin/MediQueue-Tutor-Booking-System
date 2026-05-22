@@ -7,7 +7,7 @@ const TutorCard = ({ tutor }) => {
 
   return (
     <div 
-      className="border border-gray-200 duration-200 overflow-hidden rounded-2xl shadow-md hover:shadow-[8px_8px_0_#023760] transition hover:-translate-y-1"
+      className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 duration-300 overflow-hidden rounded-2xl shadow-sm text-slate-600 dark:text-slate-400 hover:-translate-y-2 transition"
     >
       <div className="h-60 relative w-full">
         <Image 
@@ -18,22 +18,45 @@ const TutorCard = ({ tutor }) => {
         />
       </div>
 
-      <div className="p-6 space-y-2">
+      <div className="p-6">
         <div>
-          <h3 className="font-bold text-primary text-xl">
+          <h3 
+            className="font-bold text-slate-800 dark:text-slate-200 text-xl"
+          >
             {tutorName}
           </h3>
           <p className="text-muted text-sm">{subject}</p>
         </div>
 
-        <div className="space-y-1">
-          <p>Experience: {experience}</p>
-          <p>Fee: {hourlyFee}/hr</p>
+        <div className="mb-4 mt-2 space-y-1">
+          <p className="space-x-2">
+            <span 
+              className="font-semibold text-slate-800 dark:text-slate-200"
+            >
+              Experiences:
+            </span>
+            
+            <span className="text-slate-600 dark:text-slate-300">
+              {experience}
+            </span>
+          </p>
+
+          <p className="space-x-2">
+            <span 
+              className="font-semibold text-slate-800 dark:text-slate-200"
+            >
+              Fee:
+            </span> 
+            
+            <span className="text-slate-600 dark:text-slate-300">
+              TK{hourlyFee}/hour
+            </span>
+          </p>
         </div>
 
         <Link href={`/tutors/${_id}`}>
           <Button 
-            className={"bg-primary hover:bg-blue-500 duration-200 rounded-sm transition"}
+            className={"bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 rounded-md"}
           >
             Book Session
           </Button>

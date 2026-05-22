@@ -7,10 +7,13 @@ const TutorsPage = async () => {
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 space-y-10 w-full">
       <header className="space-y-1">
-        <h2 className="font-bold text-primary text-3xl">
+        <h2 
+          className="font-bold text-slate-900 dark:text-slate-50 text-3xl"
+        >
           Explore Our Tutors
         </h2>
-        <p className="max-w-lg text-muted">
+
+        <p className="max-w-lg text-slate-600 dark:text-slate-400">
           Browse experienced tutors by subject, schedule, and teaching style to find the right learning support for your academic journey.
         </p>
       </header>

@@ -39,11 +39,17 @@ const SignUpPage = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 space-y-10">
       <header className="space-y-2 text-center">
-        <h2 className="font-bold text-primary text-4xl">Create Your Account</h2>
-        <p className="max-w-2xl text-muted">
+        <h2 
+          className="font-bold text-slate-900 dark:text-slate-50 text-3xl"
+        >
+          Create Your Account
+        </h2>
+
+        <p className="max-w-2xl text-slate-600 dark:text-slate-400">
           Create an account to connect with expert tutors and schedule your learning sessions easily.
         </p>
-        <p className="text-muted">
+
+        <p className="text-slate-600 dark:text-slate-400">
           Already have an account? 
           <Link 
             className="font-medium ml-2 text-blue-500 underline" 
@@ -54,7 +60,9 @@ const SignUpPage = () => {
         </p>
       </header>
 
-      <div className="border border-gray-400 max-w-xl mx-auto p-6 rounded-2xl shadow-sm space-y-6">
+      <div 
+        className="border border-slate-200 dark:border-slate-800 max-w-xl mx-auto p-6 rounded-2xl shadow-sm space-y-6"
+      >
         <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
           <TextField
             isRequired
@@ -123,22 +131,25 @@ const SignUpPage = () => {
           </TextField>
 
           <div className="flex gap-2">
-            <Button className={"bg-primary hover:bg-blue-500 duration-200 transition w-full"} type="submit">
+            <Button 
+              className={"bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 rounded-md w-full"} 
+              type="submit"
+            >
               Sign up
             </Button>
           </div>
         </Form>
 
         <div className="flex items-center gap-2">
-          <div className="border border-gray-300 w-full"></div>
+          <div className="h-0.5 bg-slate-300 dark:bg-slate-800 w-full"></div>
           <span className="text-sm whitespace-nowrap">Or signup with</span>
-          <div className="border border-gray-300 w-full"></div>
+          <div className="h-0.5 bg-slate-300 dark:bg-slate-800 w-full"></div>
         </div>
 
         <Button 
-          className={"border-primary w-full"} 
+          className={"border border-slate-200 dark:border-slate-800 w-full bg-transparent text-black dark:text-slate-100"} 
           onClick={handleGoogleSignIn}
-          variant="outline"
+          variant="secondary"
         >
           <FcGoogle />
           Google

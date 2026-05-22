@@ -5,7 +5,7 @@ const TestimonialCard = ({ data }) => {
   
   return (
     <div 
-      className="border border-primary duration-200 p-6 rounded-2xl hover:scale-[1.05] shadow-md hover:shadow-[8px_8px_0_#023760] space-y-4 transition"
+      className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm space-y-4"
     >
       <div className="flex items-center gap-2">
         <Avatar>
@@ -14,12 +14,17 @@ const TestimonialCard = ({ data }) => {
         </Avatar>
         
         <div>
-          <p className="font-semibold">{name}</p>
+          <p className="font-semibold text-slate-900 dark:text-slate-50">
+            {name}
+          </p>
+
           <p className="text-muted text-sm">{role}</p>
         </div>
       </div>
       
-      <p className="italic text-primary">"{review}"</p>
+      <p className="italic text-slate-600 dark:text-slate-400">
+        "{review}"
+      </p>
     </div>
   );
 };

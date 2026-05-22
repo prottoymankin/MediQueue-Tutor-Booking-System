@@ -14,10 +14,15 @@ export default async function BookedSessionsPage () {
   const bookedSessions = await response.json();
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-15 space-y-10 w-full">
+    <section className="max-w-7xl mx-auto px-4 py-15 space-y-5 w-full">
       <header>
-        <h2 className="font-bold text-primary text-3xl">Booked Sessions</h2>
-        <p className="text-muted">Here are the sessions you have booked.</p>
+        <h2 className="font-bold text-primary text-3xl">
+          Booked Sessions
+        </h2>
+
+        <p className="text-slate-600 dark:text-slate-400">
+          Here are the sessions you have booked.
+        </p>
       </header>
 
       {

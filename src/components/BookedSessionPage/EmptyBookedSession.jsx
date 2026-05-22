@@ -7,7 +7,7 @@ const EmptyBookedSession = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 w-full">
       <div 
-        className="flex flex-col items-center py-10 rounded-2xl shadow-2xl space-y-5"
+        className="border border-slate-200 dark:border-slate-800 flex flex-col items-center py-10 rounded-2xl shadow-2xl space-y-5"
       >
         <div className="h-50 max-w-50 w-full overflow-hidden relative">
           <Image 
@@ -19,14 +19,23 @@ const EmptyBookedSession = () => {
         </div>
 
         <div className="text-center text-muted">
-          <h2 className="font-bold text-2xl">No Sessions Booked Yet</h2>
-          <p className="max-w-sm mx-auto">
+          <h2 
+            className="font-bold text-slate-800 dark:text-slate-200 text-2xl"
+          >
+            No Sessions Booked Yet
+          </h2>
+
+          <p 
+            className="max-w-sm mx-auto text-slate-600 dark:text-slate-400"
+          >
             You haven’t booked any tutoring sessions yet. Explore available tutors and schedule your first session.
           </p>
         </div>
 
         <Link href={"/tutors"}>
-          <Button className={"bg-primary hover:bg-blue-500"}>
+          <Button 
+            className={"bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 rounded-md"}
+          >
             Browse Tutors
           </Button>
         </Link>
