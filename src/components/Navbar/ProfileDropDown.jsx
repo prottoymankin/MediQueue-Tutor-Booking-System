@@ -28,7 +28,11 @@ const ProfileDropDown = () => {
     <Dropdown>
       <Button aria-label="Menu" className={"w-0"}>
         <Avatar>
-          <Avatar.Image alt={user?.name} src={user?.image} />
+          <Avatar.Image 
+            alt={user?.name} 
+            className="object-cover" 
+            src={user?.image} 
+          />
           <Avatar.Fallback>{user?.name?.charAt(0)}</Avatar.Fallback>
         </Avatar>
       </Button>
