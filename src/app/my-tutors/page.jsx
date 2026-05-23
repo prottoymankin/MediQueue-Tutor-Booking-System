@@ -7,10 +7,17 @@ const MyTutorPage = async () => {
   const session = await auth.api.getSession({
     headers: await headers()
   });
-
   const user = session?.user;
 
-  const response = await fetch(`http://localhost:5000/tutors/my-tutors/${user?.id}`);
+  const { token } = await auth.api.getToken({
+    headers: await headers()
+  })
+
+  const response = await fetch(`http://localhost:5000/tutors/my-tutors/${user?.id}`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  });
   const addedTutors = await response.json();
 
   return (

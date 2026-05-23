@@ -42,10 +42,12 @@ export function BookSessionModal ({ tutorId, tutorName, totalSlot, sessionStartD
       studentId: user?.id
     };
 
+    const { data:tokenData } = await authClient.token();
     const response = await fetch("http://localhost:5000/booked-session", {
       method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`
       },
       body: JSON.stringify(bookedSessionData)
     });
@@ -56,7 +58,8 @@ export function BookSessionModal ({ tutorId, tutorName, totalSlot, sessionStartD
       await fetch(`http://localhost:5000/tutors/change-slot/${tutorId}`, {
         method: "PATCH",
         headers: {
-          "content-type": "application/json"
+          "content-type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`
         },
         body: JSON.stringify({value: -1})
       });

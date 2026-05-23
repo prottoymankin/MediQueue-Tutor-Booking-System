@@ -1,15 +1,19 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {AlertDialog, Button} from "@heroui/react";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 
 export function SessionCancelModal({ session }) {
   const handleCancelSession = async () => {
+    const { data:tokenData } = await authClient.token();
+
     const response = await fetch(`http://localhost:5000/booked-session/${session?._id}`, {
       method: "PATCH",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`
       },
       body: JSON.stringify({status: "Cancelled"})
     });
@@ -21,7 +25,8 @@ export function SessionCancelModal({ session }) {
       await fetch(`http://localhost:5000/tutors/change-slot/${session?.tutorId}`, {
         method: "PATCH",
         headers: {
-          "content-type": "application/json"
+          "content-type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`
         },
         body: JSON.stringify({value: 1})
       });

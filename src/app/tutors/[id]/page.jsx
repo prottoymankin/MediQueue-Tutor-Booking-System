@@ -1,10 +1,19 @@
 import { BookSessionModal } from "@/components/Tutors/BookSessionModal";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 import Image from "next/image";
 
 const TutorDatailsPage = async ({ params }) => {
   const { id } = await params;
+  const { token } = await auth.api.getToken({
+    headers: await headers()
+  });
   
-  const response = await fetch(`http://localhost:5000/tutors/${id}`);
+  const response = await fetch(`http://localhost:5000/tutors/${id}`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  });
   const tutor = await response.json();
 
   const {  availableDaysTimes, experience, hourlyFee, _id, institution, location, photo, sessionStartDate, subject, teachingMode, totalSlot, tutorName } = tutor;

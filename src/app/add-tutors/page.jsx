@@ -22,11 +22,15 @@ const AddTutorsPage = () => {
       createdBy: user?.id,
       registrationDate: new Date().toISOString()
     };
-    
+
+    const { data: tokenData } = await authClient.token();
+    console.log(tokenData)
+
     const response = await fetch("http://localhost:5000/tutors", {
       method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`
       },
       body: JSON.stringify(newTutorData)
     });

@@ -5,6 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import { parseDate } from "@internationalized/date"
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
 export function EditAddedTutor({ tutor }) {
   const onSubmit = async (e) => {
@@ -19,10 +20,13 @@ export function EditAddedTutor({ tutor }) {
       hourlyFee: Number(updatedData.hourlyFee),
     }
 
+    const { data:tokenData } = await authClient.token();
+
     const response = await fetch(`http://localhost:5000/tutors/${tutor?._id}`, {
       method: "PATCH",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`
       },
       body: JSON.stringify(updatedData)
     });
