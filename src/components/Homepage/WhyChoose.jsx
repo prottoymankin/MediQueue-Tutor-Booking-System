@@ -33,7 +33,7 @@ const WhyChoose = () => {
   ];
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-15 space-y-10">
+    <section className="max-w-7xl mx-auto space-y-10">
       <h2 
         className="font-bold text-slate-900 dark:text-slate-50 text-center text-3xl"
       >

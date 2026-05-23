@@ -19,6 +19,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       className={`${outfit.className} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body 
         className="bg-slate-50 dark:bg-slate-950 min-h-full flex flex-col"

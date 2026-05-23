@@ -8,7 +8,7 @@ const AvailableTutors = async () => {
   const tutors = await response.json();
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-15 space-y-10 w-full">
+    <section className="max-w-7xl mx-auto space-y-10 w-full">
       <div className="flex items-center justify-between">
         <h2 
           className="font-bold text-center text-slate-900 dark:text-slate-50 text-3xl"
@@ -17,7 +17,9 @@ const AvailableTutors = async () => {
         </h2>
 
         <Link href={"/tutors"}>
-          <Button className={"bg-primary hover:bg-blue-500"}>
+          <Button 
+            className={"bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 rounded-md"}
+          >
             View All
             <FaArrowRight />
           </Button>
