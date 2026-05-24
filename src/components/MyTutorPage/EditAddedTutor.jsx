@@ -22,7 +22,7 @@ export function EditAddedTutor({ tutor }) {
 
     const { data:tokenData } = await authClient.token();
 
-    const response = await fetch(`http://localhost:5000/tutors/${tutor?._id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/${tutor?._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

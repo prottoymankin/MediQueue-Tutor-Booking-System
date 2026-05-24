@@ -15,7 +15,7 @@ const TutorsPage = () => {
 
   const fetchTutors = async () => {
     setIsLoading(true);
-    const response = await fetch("http://localhost:5000/tutors");
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors`);
     const data = await response.json();
     setTutors(data);
     setIsLoading(false);
@@ -27,7 +27,7 @@ const TutorsPage = () => {
 
   const handleSearch = async () => {
     setIsLoading(true);
-    const response = await fetch(`http://localhost:5000/api/tutors/search?search=${searchInput}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/tutors/search?search=${searchInput}`);
     const searchedTutors = await response.json();
     
     setTutors(searchedTutors);
@@ -36,7 +36,7 @@ const TutorsPage = () => {
 
   const handleFilterByDate = async () => {
     setIsLoading(true);
-    const response = await fetch(`http://localhost:5000/api/tutors/filter-by-date?startDate=${startDate}&endDate=${endDate}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/tutors/filter-by-date?startDate=${startDate}&endDate=${endDate}`);
     const filteredTutors = await response.json();
     
     setTutors(filteredTutors);

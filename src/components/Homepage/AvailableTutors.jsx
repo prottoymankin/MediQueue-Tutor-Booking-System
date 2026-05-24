@@ -4,7 +4,7 @@ import { Button } from "@heroui/react";
 import { FaArrowRight } from "react-icons/fa";
 
 const AvailableTutors = async () => {
-  const response = await fetch("http://localhost:5000/tutors?limit=6");
+  const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors?limit=6`);
   const tutors = await response.json();
 
   return (

@@ -9,7 +9,7 @@ export function SessionCancelModal({ session }) {
   const handleCancelSession = async () => {
     const { data:tokenData } = await authClient.token();
 
-    const response = await fetch(`http://localhost:5000/booked-session/${session?._id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booked-session/${session?._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -22,7 +22,7 @@ export function SessionCancelModal({ session }) {
 
     if (data.acknowledged) {
       toast.success("Session cancelled successfully");
-      await fetch(`http://localhost:5000/tutors/change-slot/${session?.tutorId}`, {
+      await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/change-slot/${session?.tutorId}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

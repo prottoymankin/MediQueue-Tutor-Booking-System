@@ -13,7 +13,7 @@ export default async function BookedSessionsPage () {
     headers: await headers()
   });
 
-  const response = await fetch(`http://localhost:5000/booked-session/${user?.id}`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booked-session/${user?.id}`, {
     headers: {
       authorization: `Bearer ${token}`
     }

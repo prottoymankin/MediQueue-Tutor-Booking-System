@@ -2,7 +2,7 @@ import Image from "next/image";
 import WhyChooseCard from "./WhyChooseCard";
 import { LiaCalendarSolid, LiaUserCheckSolid } from "react-icons/lia";
 import { MdOutlineAccessTime, MdOutlineLaptopChromebook } from "react-icons/md";
-import whyChooseUs from "../../../public/assets/why-choose-us.png";
+import askingQuestion from "../../../public/assets/asking-questions.png";
 
 const WhyChoose = () => {
    const whyChooseData = [
@@ -52,7 +52,7 @@ const WhyChoose = () => {
         <div className="aspect-square relative w-full max-w-100 mx-auto lg:w-full self-center">
           <Image
             alt=""
-            src={whyChooseUs}
+            src={askingQuestion}
             fill
             className="object-contain"
           />

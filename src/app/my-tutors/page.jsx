@@ -13,7 +13,7 @@ const MyTutorPage = async () => {
     headers: await headers()
   })
 
-  const response = await fetch(`http://localhost:5000/tutors/my-tutors/${user?.id}`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/my-tutors/${user?.id}`, {
     headers: {
       authorization: `Bearer ${token}`
     }

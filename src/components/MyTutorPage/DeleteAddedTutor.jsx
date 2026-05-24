@@ -9,7 +9,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 export function DeleteAddedTutor({ tutor }) {
   const handleDeleteAddedTutor = async () => {
     const { data: tokenData } = await authClient.token();
-    const response = await fetch(`http://localhost:5000/tutors/${tutor?._id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/${tutor?._id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${tokenData?.token}`

@@ -43,7 +43,7 @@ export function BookSessionModal ({ tutorId, tutorName, totalSlot, sessionStartD
     };
 
     const { data:tokenData } = await authClient.token();
-    const response = await fetch("http://localhost:5000/booked-session", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booked-session`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -55,7 +55,7 @@ export function BookSessionModal ({ tutorId, tutorName, totalSlot, sessionStartD
     const data = await response.json();
 
     if (data.acknowledged) {
-      await fetch(`http://localhost:5000/tutors/change-slot/${tutorId}`, {
+      await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/change-slot/${tutorId}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
