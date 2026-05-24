@@ -1,8 +1,33 @@
-import TutorCard from "@/components/Tutors/TutorCard";
+"use client";
 
-const TutorsPage = async () => {
-  const response = await fetch("http://localhost:5000/tutors");
-  const tutors = await response.json();
+import TutorCard from "@/components/Tutors/TutorCard";
+import { Button, Label, SearchField, Spinner } from "@heroui/react";
+import { useEffect, useState } from "react";
+
+const TutorsPage = () => {
+  const [searchInput, setSerachInput] = useState("");
+  const [tutors, setTutors] = useState([]);
+  const [isLoading, setIsLoading] = useState(null);
+
+  useEffect(() => {
+    const fetchTutors = async () => {
+      setIsLoading(true);
+      const response = await fetch("http://localhost:5000/tutors");
+      const data = await response.json();
+      setTutors(data);
+      setIsLoading(false);
+    }
+
+    fetchTutors();
+  },[]);
+
+  const handleSearch = async () => {
+    const response = await fetch(`http://localhost:5000/api/tutors/search?search=${searchInput}`);
+    const searchedTutors = await response.json();
+    
+    setTutors(searchedTutors);
+  }
+
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-15 space-y-10 w-full">
@@ -18,16 +43,47 @@ const TutorsPage = async () => {
         </p>
       </header>
 
-      <div className="gap-6 grid sm:grid-cols-2 lg:grid-cols-3">
-        {
-          tutors.map(tutor => (
-            <TutorCard 
-              key={tutor._id}
-              tutor={tutor}
-            />
-          ))
-        }
+      <div className="flex items-end gap-2">
+        <SearchField name="search" className={"max-w-sm"} onChange={setSerachInput}>
+          <Label>Search by tutor name</Label>
+          <SearchField.Group>
+            <SearchField.SearchIcon />
+            <SearchField.Input placeholder="Search..." />
+            <SearchField.ClearButton />
+          </SearchField.Group>
+        </SearchField>
+
+        <Button
+          className={"bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 rounded-md"}
+          onClick={handleSearch}
+        >
+          Search
+        </Button>
       </div>
+
+      {
+        isLoading ? (
+          <div className="flex flex-col items-center justify-center gap-2 h-[50vh]">
+            <Spinner size="xl" />
+            <span className="text-xs text-muted"></span>
+          </div>
+        ) : (
+          tutors.length === 0 ? (
+            <p className="text-slate-900 dark:text-slate-100">No search result found</p>
+          ) : (
+            <div className="gap-6 grid sm:grid-cols-2 lg:grid-cols-3">
+              {
+                tutors.map(tutor => (
+                  <TutorCard 
+                    key={tutor._id}
+                    tutor={tutor}
+                  />
+                ))
+              }
+            </div>
+          )
+        )
+      }
     </section>
   );
 };
