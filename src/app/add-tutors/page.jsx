@@ -58,10 +58,9 @@ const AddTutorsPage = () => {
       >
         <Fieldset>
           <FieldGroup>
-            {/* Tutor name */}
-            <TextField 
-              // className="w-full" 
+            <TextField  
               name="tutorName"
+              isRequired
               type="text"
               variant="secondary"
             >
@@ -69,10 +68,10 @@ const AddTutorsPage = () => {
               <Input placeholder="John Doe" />
             </TextField>
 
-            {/* Image */}
             <TextField 
               className="w-full" 
               name="photo"
+              isRequired
               type="url"
               variant="secondary"
             >
@@ -80,11 +79,11 @@ const AddTutorsPage = () => {
               <Input placeholder="https://example.com/tutor-image.jpg" />
             </TextField>
 
-            {/* Subject */}
             <Select 
               className="w-full"
-              name="subject" 
+              name="subject"
               placeholder="Select one"
+              isRequired
               variant="secondary"
             >
               <Label>Subject</Label>
@@ -122,10 +121,10 @@ const AddTutorsPage = () => {
               </Select.Popover>
             </Select>
 
-            {/* Available times and days */}
             <TextField 
               className="w-full" 
               name="availableDaysTimes"
+              isRequired
               type="text"
               variant="secondary"
             >
@@ -133,7 +132,6 @@ const AddTutorsPage = () => {
               <Input placeholder="Sun - Thu 5:00 PM - 8:00 PM" />
             </TextField>
 
-            {/* Hourly fee & Total slot */}
             <div className="flex flex-col md:flex-row gap-4">
               <TextField
                 className={"w-full"}
@@ -161,8 +159,7 @@ const AddTutorsPage = () => {
               </TextField>
             </div>
 
-            {/* Session Start date */}
-            <DatePicker className="w-full" name="sessionStartDate">
+            <DatePicker isRequired className="w-full" name="sessionStartDate">
               <Label>Session Start Date</Label>
               <DateField.Group fullWidth variant="secondary">
                 <DateField.Input>{(segment) => <DateField.Segment segment={segment} />}</DateField.Input>
@@ -197,10 +194,10 @@ const AddTutorsPage = () => {
               </DatePicker.Popover>
             </DatePicker>
 
-            {/* Institution */}
             <TextField 
               className="w-full" 
               name="institution"
+              isRequired
               type="text"
               variant="secondary"
             >
@@ -208,10 +205,10 @@ const AddTutorsPage = () => {
               <Input placeholder="ABC College" />
             </TextField>
 
-            {/* Experience */}
             <TextField 
               className="w-full" 
               name="experience"
+              isRequired
               type="text"
               variant="secondary"
             >
@@ -219,10 +216,10 @@ const AddTutorsPage = () => {
               <Input placeholder="5 years" />
             </TextField>
 
-            {/* Location */}
             <TextField 
               className="w-full" 
               name="location"
+              isRequired
               type="text"
               variant="secondary"
             >
@@ -230,11 +227,11 @@ const AddTutorsPage = () => {
               <Input placeholder="Dhaka" />
             </TextField>
 
-            {/* Teaching Mode */}
             <Select 
               className="w-full" 
               placeholder="Select one"
               name="teachingMode"
+              isRequired
               variant="secondary"
             >
               <Label>Teaching Mode</Label>

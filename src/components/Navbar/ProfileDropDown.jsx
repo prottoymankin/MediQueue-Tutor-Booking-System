@@ -1,8 +1,7 @@
 "use client";
 
 import {Avatar, Button, Dropdown, Label} from "@heroui/react";
-import { RiLogoutCircleRLine, RiUser3Line  } from "react-icons/ri";
-import Link from "next/link";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -39,14 +38,6 @@ const ProfileDropDown = () => {
 
       <Dropdown.Popover>
         <Dropdown.Menu onAction={(key) => console.log(`Selected: ${key}`)}>
-          <Dropdown.Item id="my-profile" textValue="My Profile">
-            <Link href={"/my-profile"}>
-              <Label className="flex gap-2 items-center text-base text-primary">
-                <RiUser3Line />
-                My Profile
-              </Label>
-            </Link>
-          </Dropdown.Item>
           <Dropdown.Item 
             id="sign-out" 
             textValue="Sign out"

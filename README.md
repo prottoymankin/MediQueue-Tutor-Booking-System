@@ -1,6 +1,6 @@
 # MediQueue – Tutor Booking System
 
-[🚀 Live Demo]()
+[🚀 Live Demo](https://mediqueue-frontend-swart.vercel.app/)
 
 ## 📝 Description
 MediQueue is a tutor booking web application that allows students to easily register, log in, and find tutors based on their needs. Users can search tutors by name and filter them by available dates, making it simple to discover the right tutor quickly.
